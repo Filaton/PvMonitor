@@ -1,0 +1,28 @@
+{
+    "registers": {
+        "BatterySoc": {
+            "address": 302,
+            "type": "uint16"
+        },
+        "BatteryActivePower": {
+            "address": 303,
+            "type": "float32"
+        },
+        "GridActivePower": {
+            "address": 315,
+            "type": "float32"
+        },
+        "ProductionActivePower": {
+            "address": 327,
+            "type": "float32"
+        },
+        "ConsumptionActivePower": {
+            "address": 343,
+            "type": "float32"
+        },
+        "GridMode": {
+            "address": 417,
+            "type": "enum16"
+        }
+    }
+}

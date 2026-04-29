@@ -9,8 +9,6 @@
         "vscode": {
             "extensions": [
                 "ms-dotnettools.csdevkit",
-                "ms-dotnettools.csharp",
-                "ms-dotnettools.vscode-dotnet-runtime",
                 "editorconfig.editorconfig",
                 "qwtel.sqlite-viewer",
                 "eamodio.gitlens"
