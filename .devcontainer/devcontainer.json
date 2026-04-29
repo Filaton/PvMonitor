@@ -1,0 +1,27 @@
+{
+    "name": "PvMonitor (.NET 9)",
+    "image": "mcr.microsoft.com/devcontainers/dotnet:9.0",
+    "features": {
+        "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
+        "ghcr.io/devcontainers/features/github-cli:1": {}
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-dotnettools.csdevkit",
+                "ms-dotnettools.csharp",
+                "ms-dotnettools.vscode-dotnet-runtime",
+                "editorconfig.editorconfig",
+                "qwtel.sqlite-viewer",
+                "eamodio.gitlens"
+            ],
+            "settings": {
+                "editor.formatOnSave": true,
+                "dotnet.defaultSolution": "PvMonitor.sln",
+                "omnisharp.enableRoslynAnalyzers": true
+            }
+        }
+    },
+    "postCreateCommand": "dotnet restore || true",
+    "remoteUser": "vscode"
+}
