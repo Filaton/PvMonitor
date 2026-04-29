@@ -1,6 +1,6 @@
 @PvMonitor.Api_HostAddress = http://localhost:5137
 
-GET {{PvMonitor.Api_HostAddress}}/weatherforecast/
+GET {{PvMonitor.Api_HostAddress}}/telemetry/now
 Accept: application/json
 
 ###
