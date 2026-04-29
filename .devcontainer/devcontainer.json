@@ -1,6 +1,6 @@
 {
-    "name": "PvMonitor (.NET 9)",
-    "image": "mcr.microsoft.com/devcontainers/dotnet:9.0",
+    "name": "PvMonitor (.NET 10)",
+    "image": "mcr.microsoft.com/devcontainers/dotnet:10.0",
     "features": {
         "ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
         "ghcr.io/devcontainers/features/github-cli:1": {}
