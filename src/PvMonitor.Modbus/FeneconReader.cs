@@ -14,6 +14,8 @@ public class FeneconReader : IModbusReader, IDisposable
     private const uint Float32Undefined = 0x7FC000;
     private const ushort Uint16Undefined = 0xFFFF;
 
+    private static readonly JsonSerializerOptions _jsonOptions = new() { PropertyNameCaseInsensitive = true };
+
     private readonly FeneconOptions _options;
     private readonly ILogger<FeneconReader> _logger;
     private readonly RegisterMap _map;
@@ -28,10 +30,8 @@ public class FeneconReader : IModbusReader, IDisposable
 
         var jsonPath = Path.Combine(AppContext.BaseDirectory, "registers.json");
         var json = File.ReadAllText(jsonPath);
-        _map = JsonSerializer.Deserialize<RegisterMap>(json, new JsonSerializerOptions
-        {
-            PropertyNameCaseInsensitive = true
-        }) ?? throw new InvalidOperationException("Failed to load register map");
+        _map = JsonSerializer.Deserialize<RegisterMap>(json, _jsonOptions)
+            ?? throw new InvalidOperationException("Failed to load register map");
     }
 
     public async Task<TelemetryReading> ReadAsync(CancellationToken cancellationToken = default)
@@ -39,8 +39,9 @@ public class FeneconReader : IModbusReader, IDisposable
         if (!_client.IsConnected)
         {
             _logger.LogInformation("Connecting to FEMS at {Host}:{Port}", _options.Host, _options.Port);
+            var addresses = await Dns.GetHostAddressesAsync(_options.Host, cancellationToken);
             _client.Connect(
-                new IPEndPoint(IPAddress.Parse(_options.Host), _options.Port),
+                new IPEndPoint(addresses[0], _options.Port),
                 ModbusEndianness.BigEndian);
         }
 
