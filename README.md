@@ -9,7 +9,7 @@ Personal portfolio project for exploring .NET in depth — Minimal APIs, EF Core
 - Reads live telemetry (battery SoC, battery/grid/production/consumption power, grid mode) from the Fenecon FEMS device over Modbus TCP
 - Register map is data-driven (`registers.json`) — supporting a new device means a new JSON file, not new code
 - Sentinel-value aware: OpenEMS undefined values (`0xFFFF`, `0x7FC000`, …) are treated as missing, not zero
-- Stores readings to SQLite via EF Core
+- Will store readings to SQLite via EF Core
 - Exposes a Minimal API with OpenAPI support
 
 ## Stack
@@ -84,7 +84,7 @@ The port is determined by `src/PvMonitor.Api/Properties/launchSettings.json`. Th
 |---|---|---|
 | `GET` | `/telemetry/now` | Read live telemetry from the device right now |
 
-OpenAPI / Swagger UI is available at `/openapi/v1.json` in the Development environment.
+OpenAPI is available at `/openapi/v1.json` in the Development environment.
 
 ### Example response
 
